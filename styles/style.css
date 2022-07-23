@@ -16,6 +16,7 @@ html {
     grid-auto-rows: repeat(16, 1fr);
     gap: 0;
 
+    
     height: 480px;
     width: 480px;
 }
@@ -34,4 +35,8 @@ body {
 
 .color {
     background-color: yellow;
+}
+
+.container > div:hover {
+    background-color: blue;
 }

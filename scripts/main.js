@@ -18,5 +18,5 @@ function clearGrid() {}
 container.addEventListener('mouseover', event => {
     console.log(event.target);
     event.target.classList.add('color');
-    event.target.style.backgroundColor = 'blue';
+    // event.target.style.backgroundColor = 'blue';
 });
