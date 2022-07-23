@@ -1,1 +1,37 @@
 /* style.css */
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-auto-rows: repeat(16, 1fr);
+    gap: 0;
+
+    height: 480px;
+    width: 480px;
+}
+
+body {
+    width: 80%;
+    margin: 2em auto;
+    font: 0.9em/1.2 Arial, Helvetica, sans-serif;
+}
+
+.container > div {
+    padding: 10px;
+    background-color: #79ffe1;
+    border: 1px solid #0c4047;
+}
+
+.color {
+    background-color: yellow;
+}
