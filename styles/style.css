@@ -6,19 +6,12 @@
     box-sizing: inherit;
 }
 
-html {
-    box-sizing: border-box;
+:root {
+    --grid: 16;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-auto-rows: repeat(16, 1fr);
-    gap: 0;
-
-    
-    height: 480px;
-    width: 480px;
+html {
+    box-sizing: border-box;
 }
 
 body {
@@ -27,16 +20,22 @@ body {
     font: 0.9em/1.2 Arial, Helvetica, sans-serif;
 }
 
-.container > div {
-    padding: 10px;
+#container {
+    display: grid;
+
+    grid-template-columns: repeat(var(--grid, 16), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--grid, 16), minmax(0, 1fr));
+    
+    gap: 0;
+
+    border: 2px dashed black;
+    /* overflow: hidden; */
+
+    height: 480px;
+    width: 480px;
+}
+
+#container > div {
     background-color: #79ffe1;
-    border: 1px solid #0c4047;
-}
-
-.color {
-    background-color: yellow;
-}
-
-.container > div:hover {
-    background-color: blue;
+    border: 0.5px solid #0c4047;
 }
