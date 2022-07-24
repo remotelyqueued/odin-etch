@@ -1,4 +1,6 @@
 // main.js
+import { changeGradient } from "./gradient.js";
+
 
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 
@@ -6,10 +8,12 @@
 const container = document.createElement('div');
 container.setAttribute('id', 'container');
 
-let size = 100;
+let size = 16;
 
 createGrid(size);
 drawGrid();
+
+container.addEventListener('mouseover', changeGradient);
 
 function createGrid(size) {
     const totalSquares = size * size;
@@ -25,6 +29,7 @@ function drawGrid() {
     document.body.append(container);
 }
 
-container.addEventListener('mouseover', event => {
-    event.target.style.backgroundColor = 'blue';
-});
+
+function changeColor(event) {}
+
+

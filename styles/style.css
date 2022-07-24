@@ -25,7 +25,7 @@ body {
 
     grid-template-columns: repeat(var(--grid, 16), minmax(0, 1fr));
     grid-template-rows: repeat(var(--grid, 16), minmax(0, 1fr));
-    
+
     gap: 0;
 
     border: 2px dashed black;
@@ -36,6 +36,8 @@ body {
 }
 
 #container > div {
-    background-color: #79ffe1;
+    /* background-color: #79ffe1; */
     border: 0.5px solid #0c4047;
+    --gradient: 0;
+    background-color: rgba(0, 0, 0, var(--gradient, 1));
 }

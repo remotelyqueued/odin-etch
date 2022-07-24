@@ -1,7 +1,8 @@
 # odin-etch
 
 todo: 
-color change
-user input
-ui design
+select option
+draw grid 
+color picker
 color gradient
+ui design
