@@ -17,26 +17,30 @@
             🕶 🍔 👻 🤯 🙅 🤣 😭 👍
         -->
         <title>etch-a-sketch</title>
-        
     </head>
     <body>
         <main>
             <div class="controls">
-                <label>
-                    choose color
-                    <select id="switcher">
-                        <option value="color-1">color</option>
-                        <option value="color-2">color</option>
-                    </select>
-                </label>
-                <label>
-                    do something else
-                    <select id="switcher-2">
-                        <option value="gradient">gradient</option>
-                        <option value="something-else">colors</option>
-                        <option value="more-stuff">random</option>
-                    </select>
-                </label>
+                <label for="color-select"> choose color </label>
+                <select name="color-select" id="color-select">
+                    <option value="tomato">tomato</option>
+                    <option value="slateblue">slateblue</option>
+                    <option value="royalblue">royalblue</option>
+                    <option value="palegreen">palegreen</option>
+                    <option value="midnightblue">midnightblue</option>
+                    <option value="mediumspringgreen">mediumspringgreen</option>
+                    <option value="indigo">indigo</option>
+                    <option value="hotpink">hotpink</option>
+                    <option value="crimson">crimson</option>
+                    <option value="dodgerblue">dodgerblue</option>
+                </select>
+
+                <label for="option-select"> choose option: </label>
+                <select name="option-select" id="option-select">
+                    <option value="colors">colors</option>
+                    <option value="gradient">gradient</option>
+                    <option value="random">random</option>
+                </select>
             </div>
         </main>
         <footer>🍔odin-project</footer>
