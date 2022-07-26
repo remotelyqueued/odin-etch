@@ -15,14 +15,11 @@ html {
 }
 
 body {
-    /* width: 80%;
-    margin: 2em auto;
-    font: 0.9em/1.2 Arial, Helvetica, sans-serif; */
+    /* width: 80%; */
+    /* margin: 2em auto; */
+    /* font: 0.9em/1.2 Arial, Helvetica, sans-serif; */
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, min);
-    grid-template-rows: repeat(auto, minmax(0, auto-fill));
 }
 
 #container {
@@ -33,21 +30,16 @@ body {
 
     gap: 0;
 
-    border: 2px dashed black;
-    /* overflow: hidden; */
-
     height: 480px;
     width: 480px;
 }
 
 #container > div {
-    /* background-color: #79ffe1; */
-    border: 0.5px solid #0c4047;
+    border: 0.5px solid black;
 }
 
 .gradient {
-    /* background-color: #79ffe1; */
-    border: 0.5px solid #0c4047;
+    border: 0.5px solid black;
     --gradient: 0;
     background-color: rgba(0, 0, 0, var(--gradient, 1));
 }
