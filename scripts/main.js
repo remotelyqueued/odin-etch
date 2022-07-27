@@ -6,7 +6,6 @@ import { createGrid } from './grid.js';
 
 // max input 100
 
-// TODO: confirm range choice
 // TODO: design (bulma)
 
 let size = 16;
@@ -31,9 +30,25 @@ rangeDisplay.textContent = size;
 container.addEventListener('mouseover', changeColor);
 
 range.addEventListener('change', event => {
-    // debounce - button to confirm
     size = Number(event.target.value);
     rangeDisplay.textContent = size;
+
+    container.remove();
+    container = document.createElement('div');
+    container.setAttribute('id', 'container');
+
+    if (optionSwitcher.value === 'gradient') {
+        container.append(...createGrid(size, true));
+        container.addEventListener('mouseover', changeGradient);
+    } else if (optionSwitcher.value === 'colors') {
+        container.append(...createGrid(size));
+        container.addEventListener('mouseover', changeColor);
+    } else {
+        container.append(...createGrid(size));
+        container.addEventListener('mouseover', changeRandom);
+        colorSwitcher.setAttribute('disabled', true);
+    }
+    drawGrid();
 });
 
 colorSwitcher.addEventListener('change', event => {
@@ -49,7 +64,6 @@ optionSwitcher.addEventListener('change', event => {
     // const clone = container.cloneNode(true);
 
     container.remove();
-
     container = document.createElement('div');
     container.setAttribute('id', 'container');
 
@@ -57,23 +71,20 @@ optionSwitcher.addEventListener('change', event => {
         container.append(...createGrid(size, true));
         container.addEventListener('mouseover', changeGradient);
         colorSwitcher.setAttribute('disabled', true);
-        drawGrid();
     } else if (event.target.value == 'colors') {
         container.append(...createGrid(size));
         container.addEventListener('mouseover', changeColor);
         colorSwitcher.removeAttribute('disabled');
-        drawGrid();
     } else {
         container.append(...createGrid(size));
         container.addEventListener('mouseover', changeRandom);
         colorSwitcher.setAttribute('disabled', true);
-        drawGrid();
     }
+    drawGrid();
 });
 
 function drawGrid() {
     root.style.setProperty('--grid', size);
-
     main.append(container);
 }
 
