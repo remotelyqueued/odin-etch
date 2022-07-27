@@ -95,8 +95,42 @@ function changeColor(event) {
 }
 
 function changeRandom(event) {
+    // firfox complains hex number isn't long enough
+
+    // if (event.target.id != 'container') {
+    //     const randomColor = Math.floor(Math.random() * 16_777_216).toString(16);
+    //     if (randomColor.length < 6) {
+    //         console.log(randomColor);
+    //     } else {
+    //         event.target.style.backgroundColor = '#' + randomColor;
+    //     }
+    // }
+
+    let hexNumbers = [
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+    ];
+
     if (event.target.id != 'container') {
-        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-        event.target.style.backgroundColor = '#' + randomColor;
+        let hexColorCode = '';
+        for (let i = 0; i < 6; i++) {
+            let randomIndex = Math.floor(Math.random() * hexNumbers.length);
+            hexColorCode += hexNumbers[randomIndex];
+        }
+        event.target.style.backgroundColor = '#' + hexColorCode;
     }
 }
