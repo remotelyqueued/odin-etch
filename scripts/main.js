@@ -13,9 +13,11 @@ let color = 'palegreen';
 
 const colorSwitcher = document.getElementById('color-select');
 const optionSwitcher = document.getElementById('option-select');
-const main = document.body.querySelector('main');
+
 const rangeDisplay = document.getElementById('range-display');
 const range = document.getElementById('range');
+
+const grid = document.getElementById('grid');
 const root = document.documentElement;
 
 let container = document.createElement('div');
@@ -85,7 +87,8 @@ optionSwitcher.addEventListener('change', event => {
 
 function drawGrid() {
     root.style.setProperty('--grid', size);
-    main.append(container);
+    // main.append(container);
+    grid.append(container);
 }
 
 function changeColor(event) {
@@ -131,6 +134,9 @@ function changeRandom(event) {
             let randomIndex = Math.floor(Math.random() * hexNumbers.length);
             hexColorCode += hexNumbers[randomIndex];
         }
-        event.target.style.backgroundColor = '#' + hexColorCode;
+        
+        if (hexColorCode != 'ffffff') {
+            event.target.style.backgroundColor = '#' + hexColorCode;
+        }
     }
 }

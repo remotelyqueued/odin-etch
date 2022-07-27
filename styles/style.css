@@ -1,25 +1,7 @@
 /* style.css */
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
 :root {
     --grid: 16;
-}
-
-html {
-    box-sizing: border-box;
-}
-
-body {
-    /* width: 80%; */
-    /* margin: 2em auto; */
-    /* font: 0.9em/1.2 Arial, Helvetica, sans-serif; */
-    margin: 0;
-    padding: 0;
 }
 
 #container {
@@ -29,9 +11,8 @@ body {
     grid-template-rows: repeat(var(--grid, 16), minmax(0, 1fr));
 
     gap: 0;
-
-    height: 480px;
-    width: 480px;
+    width: 440px;
+    height: 440px;
 }
 
 #container > div {
