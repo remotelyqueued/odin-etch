@@ -20,6 +20,8 @@ const range = document.getElementById('range');
 const grid = document.getElementById('grid');
 const root = document.documentElement;
 
+const set = document.getElementById('set');
+
 let container = document.createElement('div');
 
 container.setAttribute('id', 'container');
@@ -32,8 +34,11 @@ rangeDisplay.textContent = size;
 container.addEventListener('mouseover', changeColor);
 
 range.addEventListener('change', event => {
-    size = Number(event.target.value);
-    rangeDisplay.textContent = size;
+    rangeDisplay.textContent = event.target.value;
+});
+
+set.addEventListener('click', event => {
+    size = Number(range.value);
 
     container.remove();
     container = document.createElement('div');
@@ -134,7 +139,7 @@ function changeRandom(event) {
             let randomIndex = Math.floor(Math.random() * hexNumbers.length);
             hexColorCode += hexNumbers[randomIndex];
         }
-        
+
         if (hexColorCode != 'ffffff') {
             event.target.style.backgroundColor = '#' + hexColorCode;
         }

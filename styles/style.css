@@ -4,6 +4,10 @@
     --grid: 16;
 }
 
+html {
+    font-family: 'Roboto';
+}
+
 #container {
     display: grid;
 
@@ -11,12 +15,21 @@
     grid-template-rows: repeat(var(--grid, 16), minmax(0, 1fr));
 
     gap: 0;
-    width: 440px;
-    height: 440px;
+    aspect-ratio: 1 / 1;
+}
+
+#set {
+    width: 6rem;
 }
 
 #container > div {
     border: 0.5px solid black;
+}
+
+#navbar-item,
+#header {
+    /* font-size: 20px; */
+    font-family: 'Pacifico', cursive;
 }
 
 .gradient {
