@@ -8,11 +8,11 @@ import { createGrid } from './grid.js';
 
 // TODO: design (bulma)
 
-let size = 16;
-let color = 'palegreen';
-
 const colorSwitcher = document.getElementById('color-select');
 const optionSwitcher = document.getElementById('option-select');
+
+let color = colorSwitcher.value;
+let size = 16;
 
 const rangeDisplay = document.getElementById('range-display');
 const range = document.getElementById('range');
@@ -28,8 +28,6 @@ container.setAttribute('id', 'container');
 
 container.append(...createGrid(size));
 drawGrid();
-
-// createRandomGrid(size);
 
 rangeDisplay.textContent = size;
 
@@ -104,7 +102,7 @@ function changeColor(event) {
     }
 }
 
-function changeRandom(event) {
+function generateRandomColor() {
     // firfox complains hex number isn't long enough
 
     // if (event.target.id != 'container') {
@@ -135,75 +133,38 @@ function changeRandom(event) {
         'F',
     ];
 
-    if (event.target.id != 'container') {
-        let hexColorCode = '';
-        for (let i = 0; i < 6; i++) {
-            let randomIndex = Math.floor(Math.random() * hexNumbers.length);
-            hexColorCode += hexNumbers[randomIndex];
-        }
-
-        if (hexColorCode != 'ffffff') {
-            event.target.style.backgroundColor = '#' + hexColorCode;
-        }
+    let hexColorCode = '';
+    for (let i = 0; i < 6; i++) {
+        let randomIndex = Math.floor(Math.random() * hexNumbers.length);
+        hexColorCode += hexNumbers[randomIndex];
     }
+    return hexColorCode;
 }
 
-export function createRandomGrid(size) {
-    let grid = [];
-
-    let hexNumbers = [
-        '0',
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F',
-    ];
-
-    const totalSquares = size * size;
-
-    for (let i = 0; i < totalSquares; i++) {
-        let div = document.createElement('div');
-        let hexColorCode = '';
-        for (let i = 0; i < 6; i++) {
-            let randomIndex = Math.floor(Math.random() * hexNumbers.length);
-            hexColorCode += hexNumbers[randomIndex];
-        }
-        div.style.backgroundColor = '#' + hexColorCode;
-        grid.push(div);
+function changeRandom(event) {
+    if (event.target.id != 'container') {
+        event.target.style.backgroundColor = '#' + generateRandomColor();
     }
-
-    container.append(...grid);
-    drawGrid();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     // Get all "navbar-burger" elements
-    const $navbarBurgers = Array.prototype.slice.call(
-        document.querySelectorAll('.navbar-burger'),
-        0
-    );
+    // const $navbarBurgers = Array.prototype.slice.call(
+    //     document.querySelectorAll('.navbar-burger'),
+    //     0
+    // );
+    const navbarBurgers = document.querySelectorAll('.navbar-burger');
 
     // Add a click event on each of them
-    $navbarBurgers.forEach(el => {
-        el.addEventListener('click', () => {
+    navbarBurgers.forEach(element => {
+        element.addEventListener('click', () => {
             // Get the target from the "data-target" attribute
-            const target = el.dataset.target;
-            const $target = document.getElementById(target);
+            const target = element.dataset.target;
+            const temp = document.getElementById(target);
 
             // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-            el.classList.toggle('is-active');
-            $target.classList.toggle('is-active');
+            element.classList.toggle('is-active');
+            temp.classList.toggle('is-active');
         });
     });
 });
