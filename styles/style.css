@@ -18,17 +18,20 @@ html {
     aspect-ratio: 1 / 1;
 }
 
-#set {
-    width: 6rem;
+#setButton {
+    width: 7rem;
 }
 
 #container > div {
     border: 0.5px solid black;
 }
 
-#navbar-item,
+#navbar-item {
+    font-family: 'Pacifico', cursive;
+}
+
 #header {
-    /* font-size: 20px; */
+    font-size: 2.8rem;
     font-family: 'Pacifico', cursive;
 }
 

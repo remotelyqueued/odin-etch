@@ -32,7 +32,11 @@
         <section class="hero is-fullheight is-default is-bold">
             <!-- header -->
             <div class="hero-head">
-                <nav class="navbar">
+                <nav
+                    class="navbar"
+                    role="navigation"
+                    aria-label="main navigation"
+                >
                     <div class="container">
                         <div class="navbar-brand">
                             <p id="navbar-item" class="navbar-item">
@@ -58,12 +62,6 @@
                                 <div class="tabs is-right">
                                     <ul>
                                         <li class="is-active">
-                                            <a
-                                                href="https://www.theodinproject.com/"
-                                                >odin-project</a
-                                            >
-                                        </li>
-                                        <li>
                                             <a
                                                 href="https://developer.mozilla.org/en-US/"
                                                 >mdn</a
@@ -100,14 +98,15 @@
                         <div class="column is-7">
                             <div id="grid"></div>
                         </div>
-                        <div class="container column">
+                        <div class="container column is-offset-1">
+                            <br />
                             <h1 id="header" class="title" contenteditable>
                                 etch-a-sketch
                             </h1>
                             <h3 class="subtitle">
                                 <em>sketch an etch...</em>
                             </h3>
-                            <br />
+                            <!-- <br /> -->
 
                             <div class="field">
                                 <label for="color-select" class="label">
@@ -120,6 +119,9 @@
                                             name="color-select"
                                             id="color-select"
                                         >
+                                            <option value="white" selected>
+                                                white
+                                            </option>
                                             <option value="tomato">
                                                 tomato
                                             </option>
@@ -129,7 +131,7 @@
                                             <option value="royalblue">
                                                 royalblue
                                             </option>
-                                            <option value="palegreen" selected>
+                                            <option value="palegreen">
                                                 palegreen
                                             </option>
                                             <option value="midnightblue">
@@ -198,7 +200,10 @@
                                             class="slider is-info"
                                         />
                                         <div class="field">
-                                            <button id="set" class="button">
+                                            <button
+                                                id="setButton"
+                                                class="button"
+                                            >
                                                 set
                                             </button>
                                         </div>
@@ -219,7 +224,9 @@
                     <div class="tabs is-centered">
                         <ul>
                             <li>
-                                <a>odin-project</a>
+                                <a href="https://www.theodinproject.com/"
+                                    >odin-project</a
+                                >
                             </li>
                         </ul>
                     </div>
