@@ -1,7 +1,6 @@
 # odin-etch
 
-todo: 
-minification - webpack
+todo:
 fix readme
 
-fix js
+https://remotelyqueued.github.io/odin-etch/
