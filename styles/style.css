@@ -1,42 +1,45 @@
 /* style.css */
 
+@font-face {
+    font-family: 'pacifico';
+    src: url('../fonts/pacifico-regular-webfont.woff2') format('woff2'),
+        url('../fonts/pacifico-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: auto;
+}
+
 :root {
     --grid: 16;
 }
 
-html {
-    font-family: 'Roboto';
-}
-
 #container {
+    aspect-ratio: 1 / 1;
     display: grid;
-
+    gap: 0;
     grid-template-columns: repeat(var(--grid, 16), minmax(0, 1fr));
     grid-template-rows: repeat(var(--grid, 16), minmax(0, 1fr));
-
-    gap: 0;
-    aspect-ratio: 1 / 1;
-}
-
-#setButton {
-    width: 7rem;
 }
 
 #container > div {
     border: 0.5px solid black;
 }
 
+.gradient {
+    background-color: rgba(0, 0, 0, var(--gradient, 1));
+    border: 0.5px solid black;
+    --gradient: 0;
+}
+
+/* bulma overrides */
+#setButton {
+    width: 7rem;
+}
+
 #navbar-item {
-    font-family: 'Pacifico', cursive;
+    font-family: 'pacifico';
 }
 
 #header {
-    font-size: 2.8rem;
-    font-family: 'Pacifico', cursive;
-}
-
-.gradient {
-    border: 0.5px solid black;
-    --gradient: 0;
-    background-color: rgba(0, 0, 0, var(--gradient, 1));
+    font-family: 'pacifico';
 }

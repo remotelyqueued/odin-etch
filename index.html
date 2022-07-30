@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="etch-a-sketch" />
+
+        <link rel="stylesheet" href="./styles/bulma.min.css" />
+        <link rel="stylesheet" href="./styles/bulma.slider.min.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
+
+        <script type="module" src="./scripts/main.js"></script>
+        <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>"
+        />
+        <!-- 
+            🕶 🍔 👻 🤯 🙅 🤣 😭 👍
+        -->
+        <title>etch-a-sketch</title>
+    </head>
+    <body>
+        <section class="hero is-fullheight">
+            <!-- head -->
+            <div class="hero-head">
+                <!-- 1. nav -->
+                <nav
+                    class="navbar"
+                    role="navigation"
+                    aria-label="main navigation"
+                >
+                    <!-- navbar spacing -->
+                    <div class="container">
+                        <!-- nav -->
+                        <div class="navbar-brand">
+                            <!-- nav left -->
+                            <p id="navbar-item" class="navbar-item">
+                                etch-a-sketch
+                            </p>
+                            <!-- nav right -->
+                            <!-- burger needs to be last child of navbar-brand -->
+                            <span
+                                class="navbar-burger"
+                                role="button"
+                                aria-label="menu"
+                                aria-expanded="false"
+                                data-target="navbarMenu"
+                            >
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                            </span>
+                        </div>
+                        <!-- nav menu -->
+                        <div id="navbarMenu" class="navbar-menu">
+                            <div class="navbar-start"></div>
+                            <div class="navbar-end">
+                                <!-- nav tabs -->
+                                <div class="tabs is-right">
+                                    <ul>
+                                        <li class="is-active">
+                                            <a
+                                                href="https://developer.mozilla.org/en-US/"
+                                                >mdn</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="https://bulma.io/"
+                                                >bulma.css</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="https://javascript.info/"
+                                                >javascriptinfo</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://www.30secondsofcode.org/"
+                                                >30-seconds of code</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- hero head end -->
+
+            <!-- hero body -->
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <!-- columns -->
+                    <div class="columns is-vcentered">
+                        <!-- grid -->
+                        <div class="column is-7">
+                            <div id="grid"></div>
+                        </div>
+                        <div
+                            class="column is-centered is-offset-1"
+                        >
+                            <!-- container -->
+                            <div class="container mt-4">
+                                <h1
+                                    id="header"
+                                    class="title is-2"
+                                    contenteditable
+                                >
+                                    etch-a-sketch
+                                </h1>
+
+                                <h1 class="subtitle is-5">
+                                    <em>sketch an etch...</em>
+                                </h1>
+
+                                <div class="field">
+                                    <label for="color-select" class="label">
+                                        choose color
+                                    </label>
+
+                                    <div class="control">
+                                        <div class="select">
+                                            <select
+                                                name="color-select"
+                                                id="color-select"
+                                            >
+                                                <option value="white">
+                                                    white
+                                                </option>
+                                                <option value="tomato">
+                                                    tomato
+                                                </option>
+                                                <option value="slateblue">
+                                                    slateblue
+                                                </option>
+                                                <option value="royalblue">
+                                                    royalblue
+                                                </option>
+                                                <option
+                                                    value="palegreen"
+                                                    selected
+                                                >
+                                                    palegreen
+                                                </option>
+                                                <option value="midnightblue">
+                                                    midnightblue
+                                                </option>
+                                                <option
+                                                    value="mediumspringgreen"
+                                                >
+                                                    mediumspringgreen
+                                                </option>
+                                                <option value="indigo">
+                                                    indigo
+                                                </option>
+                                                <option value="hotpink">
+                                                    hotpink
+                                                </option>
+                                                <option value="crimson">
+                                                    crimson
+                                                </option>
+                                                <option value="dodgerblue">
+                                                    dodgerblue
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label for="option-select" class="label">
+                                        choose option:
+                                    </label>
+                                    <div class="control">
+                                        <div class="select">
+                                            <select
+                                                name="option-select"
+                                                id="option-select"
+                                                class="select"
+                                                style="width: 200px"
+                                                autocomplete="off"
+                                            >
+                                                <option
+                                                    value="colors"
+                                                    selected="selected"
+                                                >
+                                                    colors
+                                                </option>
+                                                <option value="gradient">
+                                                    gradient
+                                                </option>
+                                                <option value="random">
+                                                    random
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="slider">
+                                            <input
+                                                type="range"
+                                                id="range"
+                                                name="range"
+                                                min="2"
+                                                max="100"
+                                                step="2"
+                                                class="slider is-info"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <button id="setButton" class="button">
+                                            set
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <label for="range" class="label"
+                                            >size</label
+                                        >
+                                        <div id="range-display"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end container -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- hero body end -->
+
+            <!-- hero foot -->
+            <div class="hero-foot">
+                <div class="container">
+                    <div class="tabs is-centered">
+                        <ul>
+                            <li>
+                                <a href="https://www.theodinproject.com/"
+                                    >odin-project</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- hero foot end -->
+        </section>
+    </body>
+</html>

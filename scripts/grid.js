@@ -1,9 +1,10 @@
 /**
- * createGrid() creates a grid of size * size
+ * createGrid() creates a grid of size * size with an option
+ * for a gradient shifting ability
  *
  * @param {Number} size
  * @param {Boolean} gradient
- * @returns {Array}
+ * @returns {Array} grid
  */
 export function createGrid(size, gradient) {
     let grid = [];

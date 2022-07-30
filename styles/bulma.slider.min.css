@@ -87,7 +87,6 @@ input[type='range'].slider:not([orient='vertical']).has-output-tooltip
 input[type='range'].slider[orient='vertical'] {
     -webkit-appearance: slider-vertical;
     -moz-appearance: slider-vertical;
-    appearance: slider-vertical;
     -webkit-writing-mode: bt-lr;
     -ms-writing-mode: bt-lr;
     writing-mode: bt-lr;

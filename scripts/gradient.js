@@ -1,7 +1,7 @@
 /**
  * changeGradient() applies a gradient to the board
  * 
- * @param {MouseEvent} event
+ * @param {PointerEvent} event
  */
 export function changeGradient(event) {
     let div = event.target;
