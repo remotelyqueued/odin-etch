@@ -1,9 +1,11 @@
 /**
  * changeGradient() applies a gradient to the board
- * 
+ *
  * @param {PointerEvent} event
  */
 export function changeGradient(event) {
+    // target: element that triggered event - div gradient
+    // currentTarget: element that has the event listener - div container
     let div = event.target;
     let gradient = Number(getComputedStyle(div).getPropertyValue('--gradient'));
     if (gradient < 1) {

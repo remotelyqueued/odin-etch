@@ -1,5 +1,4 @@
 /* style.css */
-
 @font-face {
     font-family: 'pacifico';
     src: url('../fonts/pacifico-regular-webfont.woff2') format('woff2'),
@@ -36,10 +35,6 @@
     width: 7rem;
 }
 
-#navbar-item {
-    font-family: 'pacifico';
-}
-
-#header {
+#navbar-item, #header {
     font-family: 'pacifico';
 }
