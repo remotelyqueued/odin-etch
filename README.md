@@ -9,8 +9,6 @@ sites I relied on
 
 -   [bulma.io](https://bulma.io/)
 
-site link: https://remotelyqueued.github.io/odin-etch/
-
 # Concepts
 
 ## HTML
