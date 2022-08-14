@@ -1,6 +1,6 @@
 // main.js
 import { changeGradient } from './gradient.js';
-import { generateRandomColor } from './randomColor.js';
+import { generateRandomRGB } from './randomColor.js';
 import { createGrid } from './grid.js';
 
 const colorSwitcher = document.getElementById('color-select');
@@ -88,11 +88,8 @@ function drawGrid() {
 
 // implement in handlers changeColor, changeRandom, changeGradient
 function changeColor(event) {
-    event.preventDefault(); // touch drag
-    // set up variables
     const start = event.target;
     let previousElem;
-
     // console.log(event.pointerType); // mouse, touch, pen
     if (event.pointerType === 'mouse') {
         // if pointerType is mouse just set color
@@ -111,16 +108,13 @@ function changeColor(event) {
                 );
                 // if dragging outside of window or onto unrelated element
                 // return
-                if (!currentElem || currentElem.classList.length > 0) return;
+                if (!currentElem || currentElem.parentNode !== container) return;
                 // if the color is already changed return
                 if (previousElem === currentElem) return;
 
                 previousElem = currentElem;
 
                 currentElem.style.backgroundColor = color;
-
-                // e.screenX e.screenY
-                // console.log(currentElem);
             };
             // remove eventlisteners
             start.onpointerup = function (event) {
@@ -132,8 +126,40 @@ function changeColor(event) {
 }
 
 function changeRandom(event) {
-    event.preventDefault(); // touch drag
-    event.target.style.backgroundColor = '#' + generateRandomColor();
+    const start = event.target;
+    let previousElem;
+    // console.log(event.pointerType); // mouse, touch, pen
+    if (event.pointerType === 'mouse') {
+        // if pointerType is mouse just set color
+        start.style.backgroundColor = generateRandomRGB();
+    } else {
+        // touch or pen
+        start.onpointerdown = function (event) {
+            // initial input set color of square
+            start.style.backgroundColor = generateRandomRGB();
+            // if pointer moves
+            start.onpointermove = function (event) {
+                // may need to call prevent default
+                let currentElem = document.elementFromPoint(
+                    event.clientX,
+                    event.clientY
+                );
+                // if dragging outside of window or onto unrelated element
+                // return
+                if (!currentElem || currentElem.parentNode !== container) return;
+                // if the color is already changed return
+                if (previousElem === currentElem) return;
+
+                previousElem = currentElem;
+                currentElem.style.backgroundColor = generateRandomRGB();
+            };
+            // remove eventlisteners
+            start.onpointerup = function (event) {
+                start.onpointermove = null;
+                start.onpointerup = null;
+            };
+        };
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
