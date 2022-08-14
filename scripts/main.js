@@ -23,7 +23,9 @@ drawGrid();
 
 rangeDisplay.textContent = size;
 
+// multiple events firing
 container.addEventListener('pointerover', changeColor);
+container.addEventListener('pointermove', changeColor);
 
 range.addEventListener('change', event => {
     rangeDisplay.textContent = event.target.value;
@@ -40,12 +42,15 @@ setButton.addEventListener('click', event => {
     if (optionSwitcher.value === 'gradient') {
         container.append(...createGrid(size, true));
         container.addEventListener('pointerover', changeGradient);
+        container.addEventListener('pointermove', changeGradient);
     } else if (optionSwitcher.value === 'colors') {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeColor);
+        container.addEventListener('pointermove', changeColor);
     } else {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeRandom);
+        container.addEventListener('pointermove', changeRandom);
         colorSwitcher.setAttribute('disabled', true);
     }
     drawGrid();
@@ -67,14 +72,17 @@ optionSwitcher.addEventListener('change', event => {
     if (event.target.value == 'gradient') {
         container.append(...createGrid(size, true));
         container.addEventListener('pointerover', changeGradient);
+        container.addEventListener('pointermove', changeGradient);
         colorSwitcher.setAttribute('disabled', true);
     } else if (event.target.value == 'colors') {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeColor);
+        container.addEventListener('pointermove', changeColor);
         colorSwitcher.removeAttribute('disabled');
     } else {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeRandom);
+        container.addEventListener('pointermove', changeRandom);
         colorSwitcher.setAttribute('disabled', true);
     }
     drawGrid();
