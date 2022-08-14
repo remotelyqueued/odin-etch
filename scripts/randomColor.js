@@ -2,7 +2,6 @@
  * generateRandomHEX() returns a random 6 digit hex color
  *
  * firefox complains if the hex number isn't 6 digits
- * couple different ways to do this
  *
  * @returns {String} 6 digit HEX
  */
@@ -16,11 +15,12 @@ export function generateRandomHEX() {
  * generateRandomRGB() returns a random 3 digit rgb color between
  * 0 - 255 inclusive
  *
- * Chrom auto converts HEX to RGB
+ * Chrome auto converts HEX to RGB
+ *
+ * used equation in MDN random section
  *
  * @returns {String} RGB
  */
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#getting_a_random_integer_between_two_values_inclusive
 export function generateRandomRGB() {
     const randomBetween = (min, max) =>
         Math.floor(Math.random() * (max - min + 1) + min);

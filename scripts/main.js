@@ -16,6 +16,7 @@ let size = 16;
 
 let container = document.createElement('div');
 container.setAttribute('id', 'container');
+// prevent default
 container.style.touchAction = 'none';
 container.append(...createGrid(size));
 
@@ -23,7 +24,6 @@ drawGrid();
 
 rangeDisplay.textContent = size;
 
-// multiple events firing
 container.addEventListener('pointerover', changeColor);
 
 range.addEventListener('change', event => {
@@ -59,7 +59,6 @@ colorSwitcher.addEventListener('change', event => {
 optionSwitcher.addEventListener('change', event => {
     // id, name isn't unique
     // const clone = container.cloneNode(true);
-
     container.remove();
     container = document.createElement('div');
     container.style.touchAction = 'none';
@@ -86,11 +85,10 @@ function drawGrid() {
     grid.append(container);
 }
 
-// implement in handlers changeColor, changeRandom, changeGradient
+// similar to changeRandom, changeGradient
 function changeColor(event) {
     const start = event.target;
     let previousElem;
-    // console.log(event.pointerType); // mouse, touch, pen
     if (event.pointerType === 'mouse') {
         // if pointerType is mouse just set color
         start.style.backgroundColor = color;
@@ -101,22 +99,19 @@ function changeColor(event) {
             start.style.backgroundColor = color;
             // if pointer moves
             start.onpointermove = function (event) {
-                // may need to call prevent default
                 let currentElem = document.elementFromPoint(
                     event.clientX,
                     event.clientY
                 );
-                // if dragging outside of window or onto unrelated element
-                // return
-                if (!currentElem || currentElem.parentNode !== container) return;
+                // dragging outside of window or onto unrelated element
+                if (!currentElem || currentElem.parentNode !== container)
+                    return;
                 // if the color is already changed return
                 if (previousElem === currentElem) return;
 
                 previousElem = currentElem;
-
                 currentElem.style.backgroundColor = color;
             };
-            // remove eventlisteners
             start.onpointerup = function (event) {
                 start.onpointermove = null;
                 start.onpointerup = null;
@@ -128,32 +123,23 @@ function changeColor(event) {
 function changeRandom(event) {
     const start = event.target;
     let previousElem;
-    // console.log(event.pointerType); // mouse, touch, pen
     if (event.pointerType === 'mouse') {
-        // if pointerType is mouse just set color
         start.style.backgroundColor = generateRandomRGB();
     } else {
-        // touch or pen
         start.onpointerdown = function (event) {
-            // initial input set color of square
             start.style.backgroundColor = generateRandomRGB();
-            // if pointer moves
             start.onpointermove = function (event) {
-                // may need to call prevent default
                 let currentElem = document.elementFromPoint(
                     event.clientX,
                     event.clientY
                 );
-                // if dragging outside of window or onto unrelated element
-                // return
-                if (!currentElem || currentElem.parentNode !== container) return;
-                // if the color is already changed return
+                if (!currentElem || currentElem.parentNode !== container)
+                    return;
                 if (previousElem === currentElem) return;
 
                 previousElem = currentElem;
                 currentElem.style.backgroundColor = generateRandomRGB();
             };
-            // remove eventlisteners
             start.onpointerup = function (event) {
                 start.onpointermove = null;
                 start.onpointerup = null;
@@ -164,7 +150,6 @@ function changeRandom(event) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const navbarBurgers = document.querySelectorAll('.navbar-burger');
-
     navbarBurgers.forEach(element => {
         element.addEventListener('click', () => {
             const target = element.dataset.target;
