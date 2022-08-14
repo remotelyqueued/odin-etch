@@ -25,7 +25,6 @@ rangeDisplay.textContent = size;
 
 // multiple events firing
 container.addEventListener('pointerover', changeColor);
-container.addEventListener('pointermove', changeColor);
 
 range.addEventListener('change', event => {
     rangeDisplay.textContent = event.target.value;
@@ -42,15 +41,12 @@ setButton.addEventListener('click', event => {
     if (optionSwitcher.value === 'gradient') {
         container.append(...createGrid(size, true));
         container.addEventListener('pointerover', changeGradient);
-        container.addEventListener('pointermove', changeGradient);
     } else if (optionSwitcher.value === 'colors') {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeColor);
-        container.addEventListener('pointermove', changeColor);
     } else {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeRandom);
-        container.addEventListener('pointermove', changeRandom);
         colorSwitcher.setAttribute('disabled', true);
     }
     drawGrid();
@@ -72,17 +68,14 @@ optionSwitcher.addEventListener('change', event => {
     if (event.target.value == 'gradient') {
         container.append(...createGrid(size, true));
         container.addEventListener('pointerover', changeGradient);
-        container.addEventListener('pointermove', changeGradient);
         colorSwitcher.setAttribute('disabled', true);
     } else if (event.target.value == 'colors') {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeColor);
-        container.addEventListener('pointermove', changeColor);
         colorSwitcher.removeAttribute('disabled');
     } else {
         container.append(...createGrid(size));
         container.addEventListener('pointerover', changeRandom);
-        container.addEventListener('pointermove', changeRandom);
         colorSwitcher.setAttribute('disabled', true);
     }
     drawGrid();
@@ -93,9 +86,49 @@ function drawGrid() {
     grid.append(container);
 }
 
+// implement in handlers changeColor, changeRandom, changeGradient
 function changeColor(event) {
     event.preventDefault(); // touch drag
-    event.target.style.backgroundColor = color;
+    // set up variables
+    const start = event.target;
+    let previousElem;
+
+    // console.log(event.pointerType); // mouse, touch, pen
+    if (event.pointerType === 'mouse') {
+        // if pointerType is mouse just set color
+        start.style.backgroundColor = color;
+    } else {
+        // touch or pen
+        start.onpointerdown = function (event) {
+            // initial input set color of square
+            start.style.backgroundColor = color;
+            // if pointer moves
+            start.onpointermove = function (event) {
+                // may need to call prevent default
+                let currentElem = document.elementFromPoint(
+                    event.clientX,
+                    event.clientY
+                );
+                // if dragging outside of window or onto unrelated element
+                // return
+                if (!currentElem || currentElem.classList.length > 0) return;
+                // if the color is already changed return
+                if (previousElem === currentElem) return;
+
+                previousElem = currentElem;
+
+                currentElem.style.backgroundColor = color;
+
+                // e.screenX e.screenY
+                // console.log(currentElem);
+            };
+            // remove eventlisteners
+            start.onpointerup = function (event) {
+                start.onpointermove = null;
+                start.onpointerup = null;
+            };
+        };
+    }
 }
 
 function changeRandom(event) {
