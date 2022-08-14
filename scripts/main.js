@@ -16,6 +16,7 @@ let size = 16;
 
 let container = document.createElement('div');
 container.setAttribute('id', 'container');
+container.style.touchAction = 'none';
 container.append(...createGrid(size));
 
 drawGrid();
@@ -33,6 +34,7 @@ setButton.addEventListener('click', event => {
 
     container.remove();
     container = document.createElement('div');
+    container.style.touchAction = 'none';
     container.setAttribute('id', 'container');
 
     if (optionSwitcher.value === 'gradient') {
@@ -59,6 +61,7 @@ optionSwitcher.addEventListener('change', event => {
 
     container.remove();
     container = document.createElement('div');
+    container.style.touchAction = 'none';
     container.setAttribute('id', 'container');
 
     if (event.target.value == 'gradient') {
@@ -83,10 +86,12 @@ function drawGrid() {
 }
 
 function changeColor(event) {
+    event.preventDefault(); // touch drag
     event.target.style.backgroundColor = color;
 }
 
 function changeRandom(event) {
+    event.preventDefault(); // touch drag
     event.target.style.backgroundColor = '#' + generateRandomColor();
 }
 

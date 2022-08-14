@@ -6,6 +6,10 @@
 export function changeGradient(event) {
     // target: element that triggered event - div gradient
     // currentTarget: element that has the event listener - div container
+    
+    // touch and drag on mobile
+    event.preventDefault();
+
     let div = event.target;
     let gradient = Number(getComputedStyle(div).getPropertyValue('--gradient'));
     if (gradient < 1) {
